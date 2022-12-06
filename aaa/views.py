@@ -55,7 +55,7 @@ class AdsListView(ListAPIView):
         location = request.GET.get('location', None)
         if location:
             self.queryset = self.queryset.filter(
-                author__id__location__name=location
+                author__locations__name__icontains=location
             )
 
         price_from = request.GET.get('price_from')
